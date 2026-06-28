@@ -37,7 +37,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 24px;
 }
 
 .nav-links a {
@@ -107,6 +107,7 @@ body {
 }
 
 .education,
+.experience,
 .skills,
 .projects,
 .contact {
@@ -317,13 +318,16 @@ body {
   font-size: 20px;
 }
 
-.skills {
+/* Experience */
+
+.experience {
   background:
-    radial-gradient(circle at 20% 10%, rgba(226, 232, 240, 0.8), transparent 28%),
-    radial-gradient(circle at 85% 75%, rgba(204, 251, 241, 0.45), transparent 30%),
+    radial-gradient(circle at 15% 20%, rgba(226, 232, 240, 0.75), transparent 28%),
+    radial-gradient(circle at 90% 70%, rgba(204, 251, 241, 0.5), transparent 30%),
     linear-gradient(135deg, #f8fafc, #ffffff);
 }
 
+.experience-container,
 .skills-container,
 .projects-container,
 .contact-container {
@@ -331,12 +335,14 @@ body {
   margin: 0 auto;
 }
 
+.experience-heading,
 .skills-heading,
 .projects-heading,
 .contact-heading {
   margin-bottom: 34px;
 }
 
+.experience-heading h2,
 .skills-heading h2,
 .projects-heading h2,
 .contact-heading h2 {
@@ -345,13 +351,149 @@ body {
   margin-bottom: 18px;
 }
 
+.experience-heading p,
 .skills-heading p,
 .projects-heading p,
 .contact-heading p {
   color: #475569;
   font-size: 18px;
   line-height: 1.7;
-  max-width: 720px;
+  max-width: 760px;
+}
+
+.experience-board {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.experience-card {
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #111827;
+  box-shadow: 0 24px 65px rgba(15, 23, 42, 0.1);
+  opacity: 0;
+  transform: translateY(35px);
+  animation: experienceReveal 0.85s ease forwards;
+}
+
+.experience-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.experience-top span,
+.experience-top strong {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.experience-top span {
+  color: #64748b;
+}
+
+.experience-card h3 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.experience-project {
+  color: #475569;
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.experience-grid div {
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.experience-grid span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.experience-grid strong {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.experience-points {
+  display: grid;
+  gap: 12px;
+  padding-left: 20px;
+}
+
+.experience-points li {
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.experience-side {
+  display: grid;
+  gap: 14px;
+}
+
+.metric-card {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
+  opacity: 0;
+  transform: translateX(30px);
+  animation: metricReveal 0.75s ease forwards;
+}
+
+.metric-card:nth-child(1) { animation-delay: 0.15s; }
+.metric-card:nth-child(2) { animation-delay: 0.3s; }
+.metric-card:nth-child(3) { animation-delay: 0.45s; }
+
+.metric-card span {
+  color: #64748b;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.metric-card strong {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 22px;
+}
+
+.metric-card p {
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.skills {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(226, 232, 240, 0.8), transparent 28%),
+    radial-gradient(circle at 85% 75%, rgba(204, 251, 241, 0.45), transparent 30%),
+    linear-gradient(135deg, #f8fafc, #ffffff);
 }
 
 .skills-list {
@@ -732,6 +874,20 @@ body {
   }
 }
 
+@keyframes experienceReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes metricReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes contactRise {
   from {
     opacity: 0;
@@ -746,6 +902,7 @@ body {
 
 @media (max-width: 1000px) {
   .book,
+  .experience-board,
   .contact-panel {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -760,8 +917,12 @@ body {
     border-radius: 30px;
   }
 
+  .experience-grid,
   .skill-row {
     grid-template-columns: 1fr;
+  }
+
+  .skill-row {
     gap: 14px;
   }
 
@@ -802,6 +963,7 @@ body {
   }
 
   .education,
+  .experience,
   .skills,
   .projects,
   .contact {
@@ -809,6 +971,7 @@ body {
   }
 
   .book-page,
+  .experience-card,
   .project-card,
   .contact-profile {
     padding: 24px;
@@ -828,7 +991,8 @@ body {
     padding: 20px;
   }
 
-  .project-top {
+  .project-top,
+  .experience-top {
     flex-direction: column;
     gap: 8px;
   }
